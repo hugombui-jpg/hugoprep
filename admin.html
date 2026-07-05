@@ -51,7 +51,7 @@
       <div class="card" style="margin-bottom:24px">
         <table class="admin-table">
           <thead>
-            <tr><th>Email</th><th>Signed Up</th><th>Status</th><th></th></tr>
+            <tr><th>Name</th><th>Phone</th><th>Signed Up</th><th>Status</th><th></th></tr>
           </thead>
           <tbody id="pendingRows"></tbody>
         </table>
@@ -64,7 +64,7 @@
       <div class="card">
         <table class="admin-table">
           <thead>
-            <tr><th>Email</th><th>Signed Up</th><th>Status</th></tr>
+            <tr><th>Name</th><th>Phone</th><th>Signed Up</th><th>Status</th></tr>
           </thead>
           <tbody id="approvedRows"></tbody>
         </table>
@@ -96,10 +96,22 @@
     return new Date(iso).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
   }
 
+  function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str ?? '';
+    return div.innerHTML;
+  }
+
+  function nameCell(p) {
+    const fullName = [p.first_name, p.last_name].filter(Boolean).join(' ');
+    const name = fullName ? escapeHtml(fullName) : '<span style="color:var(--ink-faint)">—</span>';
+    return `<div style="font-weight:700">${name}</div><div style="font-size:.82rem;color:var(--ink-faint)">${escapeHtml(p.email)}</div>`;
+  }
+
   async function loadProfiles() {
     const { data: profiles, error } = await supabaseClient
       .from('profiles')
-      .select('id, email, approved, created_at')
+      .select('id, email, first_name, last_name, phone, approved, created_at')
       .order('created_at', { ascending: false });
 
     if (error) {
@@ -117,7 +129,8 @@
     pending.forEach(p => {
       const tr = document.createElement('tr');
       tr.innerHTML = `
-        <td>${p.email}</td>
+        <td>${nameCell(p)}</td>
+        <td>${p.phone ? escapeHtml(p.phone) : '—'}</td>
         <td>${fmtDate(p.created_at)}</td>
         <td><span class="pill-sm pending">Pending</span></td>
         <td><button class="btn btn-primary" style="padding:.5em 1.1em;font-size:.85rem" data-id="${p.id}">Approve</button></td>
@@ -150,7 +163,8 @@
     approved.forEach(p => {
       const tr = document.createElement('tr');
       tr.innerHTML = `
-        <td>${p.email}</td>
+        <td>${nameCell(p)}</td>
+        <td>${p.phone ? escapeHtml(p.phone) : '—'}</td>
         <td>${fmtDate(p.created_at)}</td>
         <td><span class="pill-sm approved">Approved</span></td>
       `;

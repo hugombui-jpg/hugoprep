@@ -30,6 +30,20 @@
     <div class="auth-msg" id="authMsg"></div>
 
     <form id="signupForm">
+      <div class="field-row">
+        <div class="field">
+          <label for="firstName">First name</label>
+          <input type="text" id="firstName" name="firstName" placeholder="Jamie" required autocomplete="given-name" />
+        </div>
+        <div class="field">
+          <label for="lastName">Last name</label>
+          <input type="text" id="lastName" name="lastName" placeholder="Smith" required autocomplete="family-name" />
+        </div>
+      </div>
+      <div class="field">
+        <label for="phone">Phone number <span class="opt">(optional)</span></label>
+        <input type="tel" id="phone" name="phone" placeholder="416-000-0000" autocomplete="tel" />
+      </div>
       <div class="field">
         <label for="email">Email address</label>
         <input type="email" id="email" name="email" placeholder="you@email.com" required autocomplete="email" />
@@ -80,6 +94,9 @@
 
     if (!requireSupabaseOrWarn(msgEl)) return;
 
+    const firstName = document.getElementById('firstName').value.trim();
+    const lastName = document.getElementById('lastName').value.trim();
+    const phone = document.getElementById('phone').value.trim();
     const email = document.getElementById('email').value.trim();
     const password = document.getElementById('password').value;
     const confirmPassword = confirmInput.value;
@@ -92,7 +109,17 @@
     submitBtn.disabled = true;
     submitBtn.textContent = 'Creating account…';
 
-    const { data, error } = await supabaseClient.auth.signUp({ email, password });
+    const { data, error } = await supabaseClient.auth.signUp({
+      email,
+      password,
+      options: {
+        data: {
+          first_name: firstName,
+          last_name: lastName,
+          phone: phone || null
+        }
+      }
+    });
 
     submitBtn.disabled = false;
     submitBtn.textContent = 'Create Account';
