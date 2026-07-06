@@ -121,16 +121,25 @@
       }
     });
 
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Create Account';
-
     if (error) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Create Account';
       showMsg(error.message || 'Something went wrong creating your account.', 'error');
       return;
     }
 
+    if (data.session) {
+      // Logged in immediately — go straight to the account/booking page.
+      submitBtn.textContent = 'Taking you to your account…';
+      window.location.href = 'dashboard.html';
+      return;
+    }
+
+    // Fallback: only reached if email confirmation is required on this project.
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Create Account';
     showMsg(
-      "You're signed up! Check your email to confirm your account, then book your free 15-minute intro below. We'll approve your account for booking after that call.",
+      "You're signed up! Check your email to confirm your account, then book your free 15-minute intro. We'll approve your account for booking after that call.",
       'success'
     );
     form.reset();
