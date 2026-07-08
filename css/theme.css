@@ -113,6 +113,9 @@ header{padding:18px 0;border-bottom:1px solid var(--line)}
 .status-badge.approved{background:var(--green-tint);color:#1F6B4E}
 .calendly-embed{min-width:280px;height:700px;border-radius:var(--r-md);overflow:hidden}
 .loading-spin{display:flex;align-items:center;justify-content:center;padding:60px 0;color:var(--ink-faint);font-weight:600}
+.free-session-banner{display:flex;align-items:center;gap:.6em;justify-content:center;background:var(--grad-coral);color:#fff;
+  font-weight:700;font-size:.92rem;padding:.85em 1.2em;border-radius:var(--r-md);margin-bottom:18px;box-shadow:0 12px 26px -12px rgba(224,103,78,.6)}
+.free-session-banner svg{width:20px;height:20px;flex:none}
 
 /* admin table */
 .admin-table{width:100%;border-collapse:collapse}

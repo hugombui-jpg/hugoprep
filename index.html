@@ -152,6 +152,8 @@
   .pill{display:inline-flex;align-items:center;gap:.5em;background:var(--paper);border:1px solid var(--line);border-radius:999px;
     padding:.5em .95em;font-size:.84rem;font-weight:600;color:var(--ink-soft);box-shadow:var(--sh-sm)}
   .pill svg{width:15px;height:15px;color:var(--green)}
+  .pill-gift{background:var(--grad-coral);color:#fff;border-color:transparent;box-shadow:0 10px 22px -10px rgba(224,103,78,.6)}
+  .pill-gift svg{color:#fff}
 
   .hero-visual{position:relative}
   .glass-card{background:rgba(255,255,255,.78);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.9);
@@ -173,6 +175,32 @@
   .float-badge.b2{bottom:-18px;right:-14px;background:var(--paper);color:var(--ink);animation:floaty 5s ease-in-out infinite .8s}
   .float-badge.b2 svg{color:var(--coral)}
   @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+  /* ============ DECORATIVE ICONS ============ */
+  .deco{position:absolute;pointer-events:none;z-index:0;color:var(--indigo);opacity:.09;will-change:transform}
+  .deco.c-coral{color:var(--coral)}
+  .deco.c-gold{color:var(--gold)}
+  .deco.c-green{color:var(--green)}
+  .deco.on-dark{color:#fff;opacity:.07}
+  .deco-sm{width:42px;height:42px}
+  .deco-md{width:68px;height:68px}
+  .deco-lg{width:104px;height:104px}
+  .drift-a{animation:driftA 9s ease-in-out infinite}
+  .drift-b{animation:driftB 11.5s ease-in-out infinite}
+  .drift-c{animation:driftC 13s ease-in-out infinite}
+  .drift-d{animation:driftD 10.5s ease-in-out infinite}
+  .spin-slow{animation:spinSlow 44s linear infinite}
+  @keyframes driftA{0%,100%{transform:translate(0,0) rotate(-4deg)}50%{transform:translate(14px,-18px) rotate(8deg)}}
+  @keyframes driftB{0%,100%{transform:translate(0,0) rotate(6deg)}50%{transform:translate(-16px,14px) rotate(-9deg)}}
+  @keyframes driftC{0%,100%{transform:translate(0,0) rotate(-3deg)}50%{transform:translate(10px,12px) rotate(7deg)}}
+  @keyframes driftD{0%,100%{transform:translate(0,0) rotate(5deg)}50%{transform:translate(-12px,-10px) rotate(-6deg)}}
+  @keyframes spinSlow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
+  /* signature open-book flourish */
+  .book-flourish{display:inline-block;perspective:240px}
+  .book-flourish svg{overflow:visible}
+  .book-flourish .page-r{transform-origin:12px 12px;animation:pageFlip 3.6s ease-in-out infinite}
+  @keyframes pageFlip{0%,15%{transform:rotateY(0deg)}45%,55%{transform:rotateY(-42deg)}85%,100%{transform:rotateY(0deg)}}
 
   /* ============ TRUST BADGES ============ */
   .badges{padding:8px 0 40px}
@@ -233,7 +261,9 @@
     display:flex;flex-direction:column;gap:14px}
   .svc-card:hover{transform:translateY(-6px);box-shadow:var(--sh-md)}
   .svc-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
-  .svc-ico{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;flex:none;background:var(--indigo-tint);color:var(--indigo-deep)}
+  .svc-ico{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;flex:none;background:var(--indigo-tint);color:var(--indigo-deep);
+    transition:transform .4s cubic-bezier(.34,1.56,.64,1)}
+  .svc-card:hover .svc-ico{transform:rotate(-8deg) scale(1.08)}
   .svc-card:nth-child(2) .svc-ico{background:var(--coral-tint);color:var(--coral-deep)}
   .svc-card:nth-child(3) .svc-ico{background:var(--green-tint);color:var(--green)}
   .svc-card:nth-child(4) .svc-ico{background:var(--gold-tint);color:#A9791A}
@@ -248,11 +278,14 @@
   .svc-meta svg{width:16px;height:16px;flex:none;color:var(--indigo)}
 
   /* ============ WHY US ============ */
-  #why{background:linear-gradient(180deg,#fff,var(--bg))}
+  #why{background:linear-gradient(180deg,#fff,var(--bg));position:relative;overflow:hidden}
+  #why .wrap{position:relative;z-index:1}
   .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:30px}
   .why-card{padding:28px 24px;border-radius:var(--r-md);background:var(--paper);border:1px solid var(--line);transition:transform .3s,box-shadow .3s}
   .why-card:hover{transform:translateY(-5px);box-shadow:var(--sh-md)}
-  .why-ico{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:var(--ink);color:#fff;margin-bottom:16px}
+  .why-ico{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:var(--ink);color:#fff;margin-bottom:16px;
+    transition:transform .4s cubic-bezier(.34,1.56,.64,1)}
+  .why-card:hover .why-ico{transform:rotate(8deg) scale(1.08)}
   .why-ico svg{width:23px;height:23px}
   .why-card h3{font-size:1.18rem;margin-bottom:8px}
   .why-card p{font-size:.92rem;color:var(--ink-soft)}
@@ -265,6 +298,7 @@
 
   /* ============ HOW IT WORKS ============ */
   #how{background:var(--ink);color:#fff;position:relative;overflow:hidden}
+  #how .wrap{position:relative;z-index:1}
   #how::before{content:"";position:absolute;top:-100px;right:-100px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(65,82,140,.4),transparent 65%)}
   #how .eyebrow{background:rgba(255,255,255,.1);color:#fff}
   #how .section-head p{color:rgba(255,255,255,.7)}
@@ -283,6 +317,8 @@
   .how-note b{color:#fff}
 
   /* ============ PRICING ============ */
+  #pricing{position:relative;overflow:hidden}
+  #pricing .wrap{position:relative;z-index:1}
   .price-wrap{display:grid;grid-template-columns:1fr 1.08fr;gap:40px;align-items:stretch}
   .price-card{background:var(--paper);border-radius:var(--r-xl);padding:40px;box-shadow:var(--sh-lg);border:1px solid var(--line);position:relative;overflow:hidden}
   .price-card::before{content:"";position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(38,51,94,.14),transparent 70%)}
@@ -294,8 +330,12 @@
   .price-list li{display:flex;align-items:flex-start;gap:.7em;font-size:.96rem;font-weight:500}
   .price-list li .ck{width:22px;height:22px;border-radius:50%;background:var(--green-tint);color:var(--green);display:grid;place-items:center;flex:none;margin-top:2px}
   .price-list li .ck svg{width:13px;height:13px}
+  .price-list li .ck.gift{background:var(--coral-tint);color:var(--coral-deep)}
   .price-card .btn{width:100%;justify-content:center}
   .price-note{font-size:.82rem;color:var(--ink-faint);text-align:center;margin-top:14px}
+  .free-ribbon{display:flex;align-items:center;gap:.5em;background:var(--grad-coral);color:#fff;font-size:.86rem;font-weight:800;
+    padding:.7em 1.1em;border-radius:var(--r-sm);margin-bottom:18px;box-shadow:0 12px 26px -12px rgba(224,103,78,.65)}
+  .free-ribbon svg{width:19px;height:19px;flex:none}
   .commit{background:linear-gradient(160deg,var(--indigo),var(--indigo-deep));color:#fff;border-radius:var(--r-xl);padding:40px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
   .commit::before{content:"";position:absolute;bottom:-90px;left:-50px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(224,103,78,.35),transparent 65%)}
   .commit .inner{position:relative;z-index:1}
@@ -318,6 +358,7 @@
 
   /* ============ BOOKING ============ */
   #book{background:var(--ink);color:#fff;position:relative;overflow:hidden}
+  #book .wrap{position:relative;z-index:1}
   #book::before{content:"";position:absolute;top:-120px;left:-80px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(38,51,94,.45),transparent 65%)}
   #book::after{content:"";position:absolute;bottom:-140px;right:-100px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(224,103,78,.3),transparent 65%)}
   #book .eyebrow{background:rgba(255,255,255,.1);color:#fff}
@@ -379,7 +420,7 @@
   .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
   .reveal.in{opacity:1;transform:none}
   .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}
-  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.float-badge{animation:none}html{scroll-behavior:auto}}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.float-badge,.deco,.book-flourish .page-r{animation:none}html{scroll-behavior:auto}}
 
   /* ============ RESPONSIVE ============ */
   @media (max-width:980px){
@@ -448,6 +489,10 @@
 
 <!-- HERO -->
 <section class="hero">
+  <div class="deco deco-lg drift-a" aria-hidden="true" style="top:8%;left:3%"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7c-2-2-5-3-9-3v13c4 0 7 1 9 3 2-2 5-3 9-3V4c-4 0-7 1-9 3Z"/><path d="M12 7v13"/></svg></div>
+  <div class="deco deco-md drift-b c-coral" aria-hidden="true" style="top:62%;left:8%"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="m17 3 4 4L7 21l-5 1 1-5Z"/><path d="m14.5 5.5 4 4"/></svg></div>
+  <div class="deco deco-md drift-c c-gold" aria-hidden="true" style="top:14%;right:4%"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="m22 10-10 5L2 10l10-5 10 5Z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/><path d="M22 10v6"/></svg></div>
+  <div class="deco deco-sm drift-d" aria-hidden="true" style="bottom:10%;right:10%"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="9" width="20" height="6" rx="1"/><path d="M6 9v2M10 9v3M14 9v2M18 9v3"/></svg></div>
   <div class="wrap hero-grid">
     <div class="hero-copy">
       <span class="eyebrow reveal"><span class="dot"></span> Toronto · Ages 6–14 · Online &amp; In-Person</span>
@@ -460,9 +505,10 @@
         <a href="#tutors" class="btn btn-ghost">Meet Your Tutors</a>
       </div>
       <div class="hero-trust reveal d4">
+        <span class="pill pill-gift"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> First 1-Hour Session Free</span>
         <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> 2026 Science Fair Gold</span>
         <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> UTS Students</span>
-        <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> $30/hr flat</span>
+        <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> $30/hr after</span>
         <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> No contracts</span>
       </div>
     </div>
@@ -530,6 +576,12 @@
 <section id="tutors" class="section-pad">
   <div class="wrap">
     <div class="section-head reveal">
+      <span class="book-flourish" aria-hidden="true" style="color:var(--indigo-deep);margin-bottom:6px;display:block">
+        <svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 6C9.5 4.5 6.5 4 3 4v13c3.5 0 6.5.5 9 2V6Z"/>
+          <path class="page-r" d="M12 6c2.5-1.5 5.5-2 9-2v13c-3.5 0-6.5.5-9 2V6Z"/>
+        </svg>
+      </span>
       <span class="eyebrow"><span class="dot"></span> Meet Your Tutors</span>
       <h2>Two students who <span class="accent">get it</span></h2>
       <p>Not a faceless agency. Just two driven students who get results and make learning click.</p>
@@ -642,6 +694,8 @@
 
 <!-- WHY US -->
 <section id="why" class="section-pad">
+  <div class="deco deco-md drift-c c-green" aria-hidden="true" style="top:6%;right:5%"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20c-4 0-7-3-7-8 0-3 2-5 4-5 1 0 2 .5 3 .5s2-.5 3-.5c1.5 0 3 1 4 3-3 1-4 3-4 5 0 3 2 4.5 2 4.5-1 1-3 .5-3 .5s-1 0-2 0Z"/><path d="M12 7c0-2 1-3 3-4"/></svg></div>
+  <div class="deco deco-sm drift-a c-coral" aria-hidden="true" style="bottom:8%;left:4%"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="9" width="20" height="6" rx="1"/><path d="M6 9v2M10 9v3M14 9v2M18 9v3"/></svg></div>
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow"><span class="dot"></span> Why HugoPrep</span>
@@ -693,6 +747,8 @@
 
 <!-- HOW IT WORKS -->
 <section id="how" class="section-pad">
+  <div class="deco deco-lg drift-a on-dark" aria-hidden="true" style="top:10%;left:4%"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7c-2-2-5-3-9-3v13c4 0 7 1 9 3 2-2 5-3 9-3V4c-4 0-7 1-9 3Z"/><path d="M12 7v13"/></svg></div>
+  <div class="deco deco-sm drift-d on-dark" aria-hidden="true" style="bottom:14%;right:6%"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="m17 3 4 4L7 21l-5 1 1-5Z"/><path d="m14.5 5.5 4 4"/></svg></div>
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow"><span class="dot"></span> How It Works</span>
@@ -727,6 +783,7 @@
 
 <!-- PRICING -->
 <section id="pricing" class="section-pad">
+  <div class="deco deco-md drift-b c-gold" aria-hidden="true" style="top:8%;left:5%"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="m22 10-10 5L2 10l10-5 10 5Z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/><path d="M22 10v6"/></svg></div>
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow"><span class="dot"></span> Pricing</span>
@@ -735,10 +792,12 @@
     </div>
     <div class="price-wrap">
       <div class="price-card reveal">
+        <div class="free-ribbon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v9H4v-9M2 7h20v5H2V7Z"/><path d="M12 22V7M12 7C10.5 4 7 3 7 3s0 3 5 4Z"/><path d="M12 7c1.5-3 5-4 5-4s0 3-5 4Z"/></svg> Your first 1-hour session is FREE</div>
         <span class="eyebrow"><span class="dot"></span> Per Session · All Included</span>
-        <div class="price-tag-row"><span class="amt">$30</span><span class="per">/ hour</span></div>
+        <div class="price-tag-row"><span class="amt">$30</span><span class="per">/ hour after that</span></div>
         <p class="price-sub">All services included. No packages, no upsells.</p>
         <ul class="price-list">
+          <li><span class="ck gift"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> <strong>Your first 1-hour tutoring session, completely free</strong></li>
           <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> All-subject tutoring (math, science, English &amp; more)</li>
           <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Specialized science tutoring &amp; science fair coaching</li>
           <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> UTS entrance exam &amp; interview prep</li>
@@ -750,7 +809,7 @@
         <a href="dashboard.html" class="btn btn-primary">Book a Free Intro Chat
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
-        <p class="price-note">No contracts. Cancel anytime. First consultation <span class="key">free</span>.</p>
+        <p class="price-note">No contracts. Cancel anytime. Free intro chat, plus your <span class="key">first full session is free</span>.</p>
       </div>
       <div class="commit reveal d1">
         <div class="inner">
@@ -809,6 +868,7 @@
 
 <!-- BOOK NOW -->
 <section id="book" class="section-pad">
+  <div class="deco deco-lg drift-c on-dark" aria-hidden="true" style="bottom:6%;left:5%"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20c-4 0-7-3-7-8 0-3 2-5 4-5 1 0 2 .5 3 .5s2-.5 3-.5c1.5 0 3 1 4 3-3 1-4 3-4 5 0 3 2 4.5 2 4.5-1 1-3 .5-3 .5s-1 0-2 0Z"/><path d="M12 7c0-2 1-3 3-4"/></svg></div>
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow"><span class="dot"></span> Book Now</span>

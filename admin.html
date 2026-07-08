@@ -60,11 +60,12 @@
 
       <div class="shell-head" style="margin-bottom:20px">
         <h1 style="font-size:1.5rem">Approved Students</h1>
+        <p>Every new student's first 1-hour session is free. Mark it used once they've had that first paid-tier session.</p>
       </div>
       <div class="card">
         <table class="admin-table">
           <thead>
-            <tr><th>Name</th><th>Phone</th><th>Signed Up</th><th>Status</th></tr>
+            <tr><th>Name</th><th>Phone</th><th>Signed Up</th><th>Status</th><th>Free Session</th></tr>
           </thead>
           <tbody id="approvedRows"></tbody>
         </table>
@@ -111,7 +112,7 @@
   async function loadProfiles() {
     const { data: profiles, error } = await supabaseClient
       .from('profiles')
-      .select('id, email, first_name, last_name, phone, approved, created_at')
+      .select('id, email, first_name, last_name, phone, approved, first_session_used, created_at')
       .order('created_at', { ascending: false });
 
     if (error) {
@@ -162,13 +163,35 @@
     approvedEmpty.style.display = approved.length ? 'none' : 'block';
     approved.forEach(p => {
       const tr = document.createElement('tr');
+      const freeSessionCell = p.first_session_used
+        ? '<span class="pill-sm approved">Used</span>'
+        : `<span class="pill-sm pending" style="margin-right:8px">Free</span><button class="btn btn-ghost" style="padding:.4em .9em;font-size:.8rem" data-used-id="${p.id}">Mark Used</button>`;
       tr.innerHTML = `
         <td>${nameCell(p)}</td>
         <td>${p.phone ? escapeHtml(p.phone) : '—'}</td>
         <td>${fmtDate(p.created_at)}</td>
         <td><span class="pill-sm approved">Approved</span></td>
+        <td>${freeSessionCell}</td>
       `;
       approvedRows.appendChild(tr);
+    });
+
+    approvedRows.querySelectorAll('button[data-used-id]').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        btn.disabled = true;
+        btn.textContent = 'Saving…';
+        const { error } = await supabaseClient
+          .from('profiles')
+          .update({ first_session_used: true })
+          .eq('id', btn.dataset.usedId);
+        if (error) {
+          alert('Could not update: ' + error.message);
+          btn.disabled = false;
+          btn.textContent = 'Mark Used';
+          return;
+        }
+        loadProfiles();
+      });
     });
   }
 
