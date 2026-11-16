@@ -1,9 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Geist:wght@400;500;600;700&display=swap");
 /* ============ SHARED THEME (signup/login/dashboard/admin pages) ============ */
 :root{
-  --bg:#F7F3EB;
+  --bg:#FBF8F2;
   --bg-2:#EEE7D8;
   --paper:#FFFFFF;
-  --ink:#1E2440;
+  --ink:#151B33;
   --ink-soft:#575D74;
   --ink-faint:#8C8FA1;
 
@@ -36,10 +37,10 @@
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  margin:0;font-family:"Plus Jakarta Sans",system-ui,-apple-system,sans-serif;
+  margin:0;font-family:"Geist",system-ui,-apple-system,sans-serif;
   color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
 }
-h1,h2,h3,h4{font-family:"Fraunces",Georgia,serif;font-weight:600;line-height:1.08;margin:0;letter-spacing:-.01em}
+h1,h2,h3,h4{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:700;line-height:1.08;margin:0;letter-spacing:-.025em}
 p{margin:0}
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
@@ -61,7 +62,7 @@ ul{margin:0;padding:0;list-style:none}
 .btn-ghost:hover{transform:translateY(-3px);border-color:var(--indigo);color:var(--indigo-deep)}
 
 /* ============ HELPERS ============ */
-.eyebrow{display:inline-flex;align-items:center;gap:.55em;font-family:"Plus Jakarta Sans",sans-serif;font-weight:700;
+.eyebrow{display:inline-flex;align-items:center;gap:.55em;font-family:"Geist",sans-serif;font-weight:700;
   font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--indigo-deep);background:var(--indigo-tint);padding:.45em 1em;border-radius:999px}
 .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--coral)}
 
