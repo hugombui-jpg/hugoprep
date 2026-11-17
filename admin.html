@@ -31,7 +31,7 @@
       <div class="card" id="notConfiguredCard"></div>
     </div>
 
-    <div id="loadingState" class="loading-spin">Loading…</div>
+    <div id="loadingState" class="loading-spin">Loading...</div>
 
     <!-- Access denied -->
     <div id="deniedState" style="display:none">
@@ -105,7 +105,7 @@
 
   function nameCell(p) {
     const fullName = [p.first_name, p.last_name].filter(Boolean).join(' ');
-    const name = fullName ? escapeHtml(fullName) : '<span style="color:var(--ink-faint)">—</span>';
+    const name = fullName ? escapeHtml(fullName) : '<span style="color:var(--ink-faint)">-</span>';
     return `<div style="font-weight:700">${name}</div><div style="font-size:.82rem;color:var(--ink-faint)">${escapeHtml(p.email)}</div>`;
   }
 
@@ -131,7 +131,7 @@
       const tr = document.createElement('tr');
       tr.innerHTML = `
         <td>${nameCell(p)}</td>
-        <td>${p.phone ? escapeHtml(p.phone) : '—'}</td>
+        <td>${p.phone ? escapeHtml(p.phone) : '-'}</td>
         <td>${fmtDate(p.created_at)}</td>
         <td><span class="pill-sm pending">Pending</span></td>
         <td><button class="btn btn-primary" style="padding:.5em 1.1em;font-size:.85rem" data-id="${p.id}">Approve</button></td>
@@ -142,7 +142,7 @@
     pendingRows.querySelectorAll('button[data-id]').forEach(btn => {
       btn.addEventListener('click', async () => {
         btn.disabled = true;
-        btn.textContent = 'Approving…';
+        btn.textContent = 'Approving...';
         const { error } = await supabaseClient
           .from('profiles')
           .update({ approved: true })
@@ -168,7 +168,7 @@
         : `<span class="pill-sm pending" style="margin-right:8px">Free</span><button class="btn btn-ghost" style="padding:.4em .9em;font-size:.8rem" data-used-id="${p.id}">Mark Used</button>`;
       tr.innerHTML = `
         <td>${nameCell(p)}</td>
-        <td>${p.phone ? escapeHtml(p.phone) : '—'}</td>
+        <td>${p.phone ? escapeHtml(p.phone) : '-'}</td>
         <td>${fmtDate(p.created_at)}</td>
         <td><span class="pill-sm approved">Approved</span></td>
         <td>${freeSessionCell}</td>
@@ -179,7 +179,7 @@
     approvedRows.querySelectorAll('button[data-used-id]').forEach(btn => {
       btn.addEventListener('click', async () => {
         btn.disabled = true;
-        btn.textContent = 'Saving…';
+        btn.textContent = 'Saving...';
         const { error } = await supabaseClient
           .from('profiles')
           .update({ first_session_used: true })

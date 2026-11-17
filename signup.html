@@ -107,7 +107,7 @@
     }
 
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Creating account…';
+    submitBtn.textContent = 'Creating account...';
 
     const { data, error } = await supabaseClient.auth.signUp({
       email,
@@ -129,8 +129,8 @@
     }
 
     if (data.session) {
-      // Logged in immediately — go straight to the account/booking page.
-      submitBtn.textContent = 'Taking you to your account…';
+      // Logged in immediately, go straight to the account/booking page.
+      submitBtn.textContent = 'Taking you to your account...';
       window.location.href = 'dashboard.html';
       return;
     }

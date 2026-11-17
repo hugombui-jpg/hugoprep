@@ -1,5 +1,5 @@
 // ============================================================
-// HugoPrep — Supabase connection
+// HugoPrep: Supabase connection
 // ============================================================
 
 const SUPABASE_URL = "https://hsbjfdohhawaaconccsw.supabase.co";

@@ -71,7 +71,7 @@
     const password = document.getElementById('password').value;
 
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Logging in…';
+    submitBtn.textContent = 'Logging in...';
 
     const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
 
