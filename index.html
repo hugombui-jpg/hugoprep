@@ -159,6 +159,17 @@
   .t-foot .loc{display:inline-flex;align-items:center;gap:.45em;color:var(--ink-2);font-weight:500}
   .t-foot .loc svg{width:16px;height:16px;color:var(--blue)}
 
+  /* more tutors */
+  .team-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 24px;margin:72px 0 24px}
+  .team-head h3{font-size:1.5rem}
+  .team-head p{color:var(--ink-3);font-size:.95rem}
+  .team{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .mate{background:var(--card);border:1px solid var(--line);border-radius:var(--r-3);padding:22px}
+  .mate .av{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--blue-tint);color:var(--blue);font-weight:600;font-size:.88rem;letter-spacing:.02em;margin-bottom:16px}
+  .mate h4{font-size:1.1rem;letter-spacing:-.02em}
+  .mate .sub{font-size:.82rem;color:var(--ink-3);margin-top:3px}
+  .mate p{font-size:.94rem;color:var(--ink-2);line-height:1.55;margin-top:12px}
+
   /* ================= SERVICES (bento) ================= */
   #services{background:var(--soft)}
   .bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
@@ -328,6 +339,7 @@
     .steps{grid-template-columns:1fr 1fr;gap:40px 28px}
     .steps::before{display:none}
     .tutor-grid,.price-grid,.contact-grid,.faq-grid{grid-template-columns:1fr}
+    .team{grid-template-columns:1fr 1fr}
     .faq-grid{gap:32px}
     .faq-grid .s-head{position:static}
   }
@@ -368,6 +380,10 @@
     .t-top{grid-template-columns:104px 1fr;gap:16px}
     .t-photo{width:104px;border-radius:var(--r-2)}
     .tutor h3{font-size:1.6rem}
+    .team-head{margin-top:56px}
+    .team{grid-template-columns:1fr;gap:10px}
+    .mate{display:grid;grid-template-columns:44px 1fr;gap:14px;padding:18px}
+    .mate .av{margin-bottom:0}
     .why-grid{grid-template-columns:1fr}
     .why,.why + .why{padding:24px 0 14px;border-right:0}
     .why + .why{border-top:1px solid var(--line)}
@@ -489,8 +505,8 @@
   <div class="wrap">
     <div class="s-head rv">
       <span class="kicker">Meet your tutors</span>
-      <h2>Two students who <span class="serif">get it.</span></h2>
-      <p>Not a faceless agency. Just two driven students who get results and make learning click.</p>
+      <h2>Tutors who <span class="serif">get it.</span></h2>
+      <p>Not a faceless agency. Hugo and Ryan started HugoPrep, and the team has grown since.</p>
     </div>
     <div class="tutor-grid">
       <article class="tutor navy rv">
@@ -528,6 +544,76 @@
         </div>
       </article>
     </div>
+    <div class="team-head rv">
+      <h3>More tutors on the team</h3>
+      <p>We'll match your child with whoever fits best.</p>
+    </div>
+    <div class="team">
+      <article class="mate rv">
+        <div class="av" aria-hidden="true">TS</div>
+        <div>
+          <h4>Theo Sarris</h4>
+          <div class="sub">All subjects</div>
+          <p>Takes on any core subject, with math and English at the top of the list. Has worked with kids before.</p>
+        </div>
+      </article>
+      <article class="mate rv d1">
+        <div class="av" aria-hidden="true">DL</div>
+        <div>
+          <h4>Derek Li</h4>
+          <div class="sub">All subjects</div>
+          <p>Happy to cover every subject and especially strong in math and English. Used to working with younger students.</p>
+        </div>
+      </article>
+      <article class="mate rv d2">
+        <div class="av" aria-hidden="true">EN</div>
+        <div>
+          <h4>Ethan Nho</h4>
+          <div class="sub">All subjects</div>
+          <p>Likes a bit of everything, with math and English as the best two. Has experience working with kids.</p>
+        </div>
+      </article>
+      <article class="mate rv d3">
+        <div class="av" aria-hidden="true">AF</div>
+        <div>
+          <h4>Aymeric Foucault</h4>
+          <div class="sub">All subjects</div>
+          <p>Covers the full range of subjects and does best in math and English. Has spent time working with kids.</p>
+        </div>
+      </article>
+      <article class="mate rv">
+        <div class="av" aria-hidden="true">RL</div>
+        <div>
+          <h4>Ronny Li</h4>
+          <div class="sub">All subjects</div>
+          <p>Math and English are the strong suits, but any subject is fair game. Has worked with younger kids before.</p>
+        </div>
+      </article>
+      <article class="mate rv d1">
+        <div class="av" aria-hidden="true">IG</div>
+        <div>
+          <h4>Ilya Ganjali</h4>
+          <div class="sub">All subjects</div>
+          <p>Enjoys tutoring all subjects. Math and English come easiest, and working with kids is familiar ground.</p>
+        </div>
+      </article>
+      <article class="mate rv d2">
+        <div class="av" aria-hidden="true">IR</div>
+        <div>
+          <h4>Iman Ali Raza</h4>
+          <div class="sub">All subjects</div>
+          <p>Strong in English and math, and glad to help with the rest too. Comes with experience working with kids.</p>
+        </div>
+      </article>
+      <article class="mate rv d3">
+        <div class="av" aria-hidden="true">MY</div>
+        <div>
+          <h4>Martin Yousseff</h4>
+          <div class="sub">All subjects</div>
+          <p>Good at math, good at English, and up for any other subject. No stranger to working with kids.</p>
+        </div>
+      </article>
+    </div>
   </div>
 </section>
 
@@ -540,14 +626,14 @@
       <p>Four things we're good at. Pick one, or tell us what's going on and we'll figure it out together.</p>
     </div>
     <div class="bento">
-      <article class="svc feature w4 rv">
-        <span class="pill">Our strongest area</span>
-        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.31M14 9.3V1.99M8.5 2h7M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg></div>
-        <h3>Science Tutoring &amp; Fair Coaching</h3>
-        <p>We both won <strong>Gold at the 2026 Toronto Science Fair</strong>. We help with regular schoolwork, and we can coach your kid through their own science fair project too.</p>
-        <div class="who">Hugo &amp; Ryan · Gold medalist coaches</div>
+      <article class="svc w3 rv">
+        <span class="pill">Grades 1-8</span>
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2zM22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/></svg></div>
+        <h3>All-Subject Tutoring</h3>
+        <p>Math, science, English, and more. We cover all core subjects for grades 1 to 8 and focus on understanding the material, so homework stops being a fight.</p>
+        <div class="who">Hugo, Ryan and the team</div>
       </article>
-      <article class="svc w2 rv d1">
+      <article class="svc w3 rv d1">
         <span class="pill">Exam &amp; Interview</span>
         <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
         <h3>UTS Entrance Prep</h3>
@@ -555,18 +641,18 @@
         <div class="who">Hugo &amp; Ryan</div>
       </article>
       <article class="svc w3 rv">
-        <span class="pill">Grades 1-8</span>
-        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2zM22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/></svg></div>
-        <h3>All-Subject Tutoring</h3>
-        <p>Math, science, English, and more. We cover all core subjects for grades 1 to 8 and focus on understanding the material, so homework stops being a fight.</p>
-        <div class="who">Hugo &amp; Ryan</div>
-      </article>
-      <article class="svc w3 rv d1">
         <span class="pill">Screening &amp; Testing</span>
         <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2Z"/></svg></div>
         <h3>Gifted Program Prep</h3>
         <p>Gifted screening coming up? We'll go over what the test actually looks like and practice the kinds of questions on it, so your kid walks in calm instead of cramming the night before.</p>
         <div class="who">Hugo</div>
+      </article>
+      <article class="svc w3 rv d1">
+        <span class="pill">Class &amp; Projects</span>
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.31M14 9.3V1.99M8.5 2h7M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg></div>
+        <h3>Science Tutoring &amp; Fair Coaching</h3>
+        <p>Help with science class, plus coaching for science fair projects from the first idea to the final board.</p>
+        <div class="who">Hugo &amp; Ryan</div>
       </article>
     </div>
   </div>
@@ -584,10 +670,10 @@
       <article class="why rv"><div class="num">01</div><h3>Current Students</h3><p>We're not remembering school from ten years ago, we're living it right now. We know the current curriculum, test formats, and what teachers actually look for.</p></article>
       <article class="why rv d1"><div class="num">02</div><h3>Been Through It</h3><p>UTS admissions, gifted testing, science fairs: we went through them recently. We'll tell you what actually helped us and what was a waste of time.</p></article>
       <article class="why rv d2"><div class="num">03</div><h3>Peer Connection</h3><p>Kids learn better when comfortable. We're close in age to our students, so it feels more like working with a helpful older sibling than sitting in another class.</p></article>
-      <article class="why rv d3"><div class="num">04</div><h3>Proven Track Record</h3><p>Two students at one of Canada's top schools, both Toronto Science Fair gold medalists. We practice what we teach.</p></article>
+      <article class="why rv d3"><div class="num">04</div><h3>Proven Track Record</h3><p>Started by two students at one of Canada's top schools, both Toronto Science Fair gold medalists. We practice what we teach.</p></article>
     </div>
     <div class="checks">
-      <div class="check rv"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><h4>Two Expert Tutors</h4><p>Matched to your child's needs</p></div></div>
+      <div class="check rv"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><h4>A Team of Tutors</h4><p>Matched to your child's needs</p></div></div>
       <div class="check rv d1"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><h4>All Subjects</h4><p>Math, Science, English &amp; more</p></div></div>
       <div class="check rv d2"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><h4>Free Consultation</h4><p>No commitment, just a conversation</p></div></div>
       <div class="check rv d3"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><h4>One Flat Rate</h4><p>$40/hr, no hidden fees</p></div></div>
@@ -606,7 +692,7 @@
     <div class="steps">
       <div class="step rv"><div class="step-n">1</div><h3>Reach Out</h3><p>Send us an email or give us a call. Tell us a bit about what you or your child needs help with, the subject, the grade, whatever's on your mind.</p></div>
       <div class="step rv d1"><div class="step-n">2</div><h3>Free Intro Chat</h3><p>We'll set up a quick introductory conversation (totally free) to understand the student's goals and figure out the best plan. Parents are welcome to join.</p></div>
-      <div class="step rv d2"><div class="step-n">3</div><h3>Get Matched</h3><p>We'll pair your child with Hugo, Ryan, or both, depending on the subject and who they click with.</p></div>
+      <div class="step rv d2"><div class="step-n">3</div><h3>Get Matched</h3><p>We'll pair your child with the tutor who fits best, depending on the subject and who they click with.</p></div>
       <div class="step rv d3"><div class="step-n">4</div><h3>Start Learning</h3><p>Sessions begin with flexible scheduling. Hugo offers in-person in Toronto or online; Ryan tutors online only. We'll adjust the plan as we go based on what's working.</p></div>
     </div>
     <div class="how-note rv">
@@ -671,7 +757,7 @@
     </div>
     <div class="faq-list rv d1">
       <details><summary>What subjects do you tutor?<span class="pm" aria-hidden="true"></span></summary><div class="faq-a">We cover all core subjects for grades 1-8: math, science, English, and French. On top of that, we offer specialized prep for the UTS entrance exam, gifted program testing, and science fair projects. Hugo covers every subject; Ryan focuses on math and science.</div></details>
-      <details><summary>Who are the tutors?<span class="pm" aria-hidden="true"></span></summary><div class="faq-a">Hugo Bui and Ryan Zander, two Grade 9 students at UTS (one of Canada's top schools) and gold medalists at the 2026 Toronto Science Fair. Because we're current students, we teach the exact curriculum and admissions processes your child is facing right now.</div></details>
+      <details><summary>Who are the tutors?<span class="pm" aria-hidden="true"></span></summary><div class="faq-a">HugoPrep was started by Hugo Bui and Ryan Zander, two Grade 9 students at UTS (one of Canada's top schools) and gold medalists at the 2026 Toronto Science Fair. The team now has eight more tutors, all listed in the Tutors section. Because we're current students, we teach the exact curriculum and admissions processes your child is facing right now.</div></details>
       <details><summary>How much does tutoring cost?<span class="pm" aria-hidden="true"></span></summary><div class="faq-a">A flat $40 per hour for everything: regular tutoring, UTS prep, gifted prep, and science fair coaching all cost the same. Your first 1-hour session is free, the intro consultation is free, and there are no contracts or hidden fees.</div></details>
       <details><summary>Can we do online sessions?<span class="pm" aria-hidden="true"></span></summary><div class="faq-a">Absolutely. Ryan teaches online only, and Hugo is available either in-person across Toronto or online, whichever works best for your family's schedule and location.</div></details>
       <details><summary>How do we get started?<span class="pm" aria-hidden="true"></span></summary><div class="faq-a">Book a free intro on our scheduling page, or send a message using the form below. We'll set up a quick intro chat, learn about your child's goals, match them with the right tutor, and book the first session.</div></details>
