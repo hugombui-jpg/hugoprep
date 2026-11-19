@@ -63,10 +63,6 @@
         <h1 id="approvedHeading">Book a session</h1>
         <p id="approvedSub">You're approved! Pick a time below for your tutoring session.</p>
       </div>
-      <div class="free-session-banner" id="freeSessionBanner" style="display:none">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v9H4v-9M2 7h20v5H2V7Z"/><path d="M12 22V7M12 7C10.5 4 7 3 7 3s0 3 5 4Z"/><path d="M12 7c1.5-3 5-4 5-4s0 3-5 4Z"/></svg>
-        This first session is on us, no charge for your first 1-hour booking.
-      </div>
       <div class="card" style="padding:12px">
         <span class="status-badge approved" style="margin:12px 0 0 12px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><path d="M20 6 9 17l-5-5"/></svg> Approved</span>
         <div class="calendly-inline-widget calendly-embed" data-url="https://calendly.com/hugombui/30min?hide_gdpr_banner=1"></div>
@@ -125,11 +121,6 @@
 
     if (profile.approved) {
       approvedState.style.display = 'block';
-      if (!profile.first_session_used) {
-        document.getElementById('freeSessionBanner').style.display = 'flex';
-        document.getElementById('approvedHeading').textContent = 'Book your free session';
-        document.getElementById('approvedSub').textContent = "You're approved, and your first 1-hour session is free! Pick a time below.";
-      }
     } else {
       pendingState.style.display = 'block';
     }

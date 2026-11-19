@@ -55,17 +55,17 @@
           </thead>
           <tbody id="pendingRows"></tbody>
         </table>
-        <div class="empty-state" id="pendingEmpty" style="display:none">No pending sign-ups right now. 🎉</div>
+        <div class="empty-state" id="pendingEmpty" style="display:none">No pending sign-ups right now.</div>
       </div>
 
       <div class="shell-head" style="margin-bottom:20px">
         <h1 style="font-size:1.5rem">Approved Students</h1>
-        <p>Every new student's first 1-hour session is free. Mark it used once they've had that first paid-tier session.</p>
+        <p>The free first hour is a draw prize now, not automatic. This column tracks who has had their first session.</p>
       </div>
       <div class="card">
         <table class="admin-table">
           <thead>
-            <tr><th>Name</th><th>Phone</th><th>Signed Up</th><th>Status</th><th>Free Session</th></tr>
+            <tr><th>Name</th><th>Phone</th><th>Signed Up</th><th>Status</th><th>First Session</th></tr>
           </thead>
           <tbody id="approvedRows"></tbody>
         </table>
@@ -164,8 +164,8 @@
     approved.forEach(p => {
       const tr = document.createElement('tr');
       const freeSessionCell = p.first_session_used
-        ? '<span class="pill-sm approved">Used</span>'
-        : `<span class="pill-sm pending" style="margin-right:8px">Free</span><button class="btn btn-ghost" style="padding:.4em .9em;font-size:.8rem" data-used-id="${p.id}">Mark Used</button>`;
+        ? '<span class="pill-sm approved">Done</span>'
+        : `<span class="pill-sm pending" style="margin-right:8px">Not yet</span><button class="btn btn-ghost" style="padding:.4em .9em;font-size:.8rem" data-used-id="${p.id}">Mark Done</button>`;
       tr.innerHTML = `
         <td>${nameCell(p)}</td>
         <td>${p.phone ? escapeHtml(p.phone) : '-'}</td>
@@ -187,7 +187,7 @@
         if (error) {
           alert('Could not update: ' + error.message);
           btn.disabled = false;
-          btn.textContent = 'Mark Used';
+          btn.textContent = 'Mark Done';
           return;
         }
         loadProfiles();
