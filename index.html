@@ -64,6 +64,10 @@
   .s-head h2 .serif{font-size:1.1em}
   .s-head p{font-size:1.1rem;color:var(--ink-2)}
   .s-head.center{text-align:center;margin-left:auto;margin-right:auto}
+  .sec-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,420px);gap:64px;align-items:end;margin-bottom:56px}
+  .sec-top .s-head{margin-bottom:0}
+  .sec-pic{margin:0}
+  .sec-pic img{display:block;width:100%;height:auto;aspect-ratio:10/7;object-fit:cover;border-radius:var(--r-4);background:var(--soft)}
 
   /* buttons */
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;font-weight:550;font-size:1rem;letter-spacing:-.01em;padding:14px 22px;border-radius:999px;transition:transform .18s ease,background .18s ease,box-shadow .18s ease,color .18s ease;white-space:nowrap;min-height:48px}
@@ -175,14 +179,14 @@
   .svc{position:relative;background:var(--card);border-radius:var(--r-4);padding:32px;border:1px solid var(--line);overflow:hidden;display:flex;flex-direction:column;min-height:260px;transition:transform .25s ease,box-shadow .25s ease}
   .svc:hover{transform:translateY(-2px);box-shadow:var(--sh-2)}
   .svc.w4{grid-column:span 4}.svc.w2{grid-column:span 2}.svc.w3{grid-column:span 3}
-  .svc-ico{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--blue-tint);color:var(--blue);margin-bottom:auto}
-  .svc-ico svg{width:22px;height:22px}
-  .svc .pill{position:absolute;top:32px;right:32px;font-size:.76rem;font-weight:500;padding:6px 11px;border-radius:999px;background:var(--soft);color:var(--ink-2)}
-  .svc h3{font-size:1.5rem;margin:36px 0 10px}
+  .svc-img{margin:-32px -32px 26px;aspect-ratio:16/9;overflow:hidden;background:var(--soft)}
+  .svc-img img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+  .svc:hover .svc-img img{transform:scale(1.03)}
+  .svc .pill{position:absolute;z-index:1;top:16px;right:16px;font-size:.76rem;font-weight:500;padding:6px 11px;border-radius:999px;background:rgba(255,255,255,.94);color:var(--ink);box-shadow:0 1px 2px rgba(11,15,25,.14)}
+  .svc h3{font-size:1.5rem;margin:0 0 10px}
   .svc p{color:var(--ink-2);font-size:.98rem}
-  .svc .who{margin-top:18px;font-size:.85rem;font-weight:500;color:var(--ink-3)}
+  .svc .who{margin-top:auto;padding-top:18px;font-size:.85rem;font-weight:500;color:var(--ink-3)}
   .svc.feature{background:radial-gradient(560px 320px at 100% 0%,rgba(37,80,230,.55),transparent 72%),var(--ink);color:#fff;border-color:transparent}
-  .svc.feature .svc-ico{background:rgba(255,255,255,.1);color:#fff}
   .svc.feature .pill{background:rgba(255,255,255,.14);color:#fff}
   .svc.feature h3{font-size:2.1rem;max-width:460px}
   .svc.feature p{color:#C3C8D4;max-width:520px;font-size:1.05rem}
@@ -263,7 +267,7 @@
   .faq-a{padding:0 56px 24px 0;color:var(--ink-2);font-size:1rem}
 
   /* ================= BOOK BAND ================= */
-  .band{position:relative;background:var(--blue);color:#fff;border-radius:var(--r-4);padding:80px 48px;text-align:center;overflow:hidden}
+  .band{position:relative;background-color:var(--blue);background-image:linear-gradient(180deg,rgba(37,80,230,.9) 0%,rgba(27,63,196,.7) 100%),url(images/toronto.jpg);background-size:cover;background-position:center 62%;color:#fff;border-radius:var(--r-4);padding:80px 48px;text-align:center;overflow:hidden}
   .band::before{content:"";position:absolute;inset:0;background:radial-gradient(640px 320px at 50% 125%,rgba(255,255,255,.24),transparent 70%);pointer-events:none}
   .band > *{position:relative}
   .band h2{font-size:clamp(2.3rem,4.8vw,3.8rem);letter-spacing:-.045em}
@@ -345,6 +349,8 @@
     .hamburger{display:inline-flex}
     .sec{padding:84px 0}
     .bento{grid-template-columns:1fr}
+    .sec-top{grid-template-columns:1fr;gap:32px;margin-bottom:40px}
+    .sec-pic img{aspect-ratio:16/9;border-radius:var(--r-3)}
     .svc.w4,.svc.w2,.svc.w3{grid-column:auto}
     .foot-grid{grid-template-columns:1fr 1fr}
     .foot-brand{grid-column:1 / -1}
@@ -387,7 +393,8 @@
     .checks{grid-template-columns:1fr}
     .steps{grid-template-columns:1fr}
     .svc{padding:26px;min-height:0}
-    .svc .pill{top:26px;right:26px}
+    .svc .pill{top:12px;right:12px}
+    .svc-img{margin:-26px -26px 22px}
     .svc.feature h3{font-size:1.7rem}
     .price,.promise,.form-card{padding:28px 22px}
     .free-pill{position:static;display:inline-block;margin-bottom:14px}
@@ -625,28 +632,28 @@
     <div class="bento">
       <article class="svc w3 rv">
         <span class="pill">Grades 1-8</span>
-        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2zM22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/></svg></div>
+        <div class="svc-img"><img src="images/svc-all-subjects.jpg" alt="A stack of colourful school books" width="1040" height="585" loading="lazy" decoding="async" /></div>
         <h3>All-Subject Tutoring</h3>
         <p>Math, science, English, and more. We cover all core subjects for grades 1 to 8 and focus on understanding the material, so homework stops being a fight.</p>
         <div class="who">Hugo, Ryan and the team</div>
       </article>
       <article class="svc w3 rv d1">
         <span class="pill">Exam &amp; Interview</span>
-        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+        <div class="svc-img"><img src="images/svc-uts-prep.jpg" alt="A pencil resting on a multiple-choice answer sheet" width="1040" height="585" loading="lazy" decoding="async" /></div>
         <h3>UTS Entrance Prep</h3>
         <p>We both go to UTS. We took the entrance exam. We know what they're looking for. We'll help you prep for the exam and interview so you walk in confident.</p>
         <div class="who">Hugo &amp; Ryan</div>
       </article>
       <article class="svc w3 rv">
         <span class="pill">Screening &amp; Testing</span>
-        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2Z"/></svg></div>
+        <div class="svc-img"><img src="images/svc-gifted.jpg" alt="A black knight chess piece on a board" width="1040" height="585" loading="lazy" decoding="async" /></div>
         <h3>Gifted Program Prep</h3>
         <p>Gifted screening coming up? We'll go over what the test actually looks like and practice the kinds of questions on it, so your kid walks in calm instead of cramming the night before.</p>
         <div class="who">Hugo</div>
       </article>
       <article class="svc w3 rv d1">
         <span class="pill">Class &amp; Projects</span>
-        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.31M14 9.3V1.99M8.5 2h7M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg></div>
+        <div class="svc-img"><img src="images/svc-science.jpg" alt="Close-up of the lenses on a microscope" width="1040" height="585" loading="lazy" decoding="async" /></div>
         <h3>Science Tutoring &amp; Fair Coaching</h3>
         <p>Help with science class, plus coaching for science fair projects from the first idea to the final board.</p>
         <div class="who">Hugo &amp; Ryan</div>
@@ -658,10 +665,13 @@
 <!-- WHY US -->
 <section id="why" class="sec">
   <div class="wrap">
-    <div class="s-head rv">
-      <span class="kicker">Why HugoPrep</span>
-      <h2>Get the best with <span class="serif">real student tutors.</span></h2>
-      <p>What makes learning with us different from the rest.</p>
+    <div class="sec-top">
+      <div class="s-head rv">
+        <span class="kicker">Why HugoPrep</span>
+        <h2>Get the best with <span class="serif">real student tutors.</span></h2>
+        <p>What makes learning with us different from the rest.</p>
+      </div>
+      <figure class="sec-pic rv d1"><img src="images/why-homework.jpg" alt="Handwritten math homework on graph paper" width="1000" height="700" loading="lazy" decoding="async" /></figure>
     </div>
     <div class="why-grid">
       <article class="why rv"><div class="num">01</div><h3>Current Students</h3><p>We're not remembering school from ten years ago, we're living it right now. We know the current curriculum, test formats, and what teachers actually look for.</p></article>
@@ -681,10 +691,13 @@
 <!-- HOW IT WORKS -->
 <section id="how" class="sec">
   <div class="wrap">
-    <div class="s-head rv">
-      <span class="kicker">How it works</span>
-      <h2>Easy and <span class="serif">convenient.</span></h2>
-      <p>Getting started is simple. No complicated sign-ups, no contracts, no pressure.</p>
+    <div class="sec-top">
+      <div class="s-head rv">
+        <span class="kicker">How it works</span>
+        <h2>Easy and <span class="serif">convenient.</span></h2>
+        <p>Getting started is simple. No complicated sign-ups, no contracts, no pressure.</p>
+      </div>
+      <figure class="sec-pic rv d1"><img src="images/how-desk.jpg" alt="A laptop, notebooks and pens on a white desk" width="1000" height="700" loading="lazy" decoding="async" /></figure>
     </div>
     <div class="steps">
       <div class="step rv"><div class="step-n">1</div><h3>Reach Out</h3><p>Send us an email or give us a call. Tell us a bit about what you or your child needs help with, the subject, the grade, whatever's on your mind.</p></div>
